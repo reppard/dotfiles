@@ -1,0 +1,7 @@
+#!/bin/bash
+# script to copy dot files to home dir
+
+for files in $(ls | grep -v copy_script); do
+  echo Copying $files....
+  cp $files ~/.$files
+done;

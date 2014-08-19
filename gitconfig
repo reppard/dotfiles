@@ -1,0 +1,9 @@
+[log]
+	decorate = full
+[color]
+
+[alias]
+  logger = "log --graph --abbrev-commit '--format=format:%h %C(yellow)%ci%Creset %Cgreen%an%Creset | %s'"
+  dif = "diff --color"
+[core]
+	editor = vim
