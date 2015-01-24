@@ -2,32 +2,27 @@ set nocompatible
 syntax on
 
 filetype off
-call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()
 filetype plugin indent on
 
 compiler ruby
 
 set hlsearch
 set number
-set showmatch
 set incsearch
-set background=dark
-set hidden
 set backspace=indent,eol,start
 set textwidth=0 nosmartindent tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set ruler
 set wrap
 set dir=/tmp//
-set scrolloff=5
-
-set foldmethod=manual
+set scrolloff=25
 set foldlevelstart=20
-
 set ignorecase
 set smartcase
 
+let g:syntastic_puppet_puppetlint_args = '--no-autoloader_layout-check'
 let g:AckAllFiles = 0
-let g:AckCmd = 'ack --type-add ruby=.feature --ignore-dir=tmp 2> /dev/null'
+let g:AckCmd = 'ack-grep --type-add ruby=.feature --ignore-file=*.xml --ignore-dir=vendor/bundle --ignore-dir=tmp 2> /dev/null'
 
 let html_use_css=1
 let html_number_lines=0
@@ -64,7 +59,6 @@ function! ToggleRelativeNumber()
     set relativenumber
   endif
 endfunction
-
 
 autocmd FileType ruby runtime ruby_mappings.vim
 imap <C-L> <SPACE>=><SPACE>
@@ -113,23 +107,32 @@ if version >= 700
     autocmd FileType tex setlocal spell spelllang=en_us
 endif
 
-colorscheme slate
+" ------------------------------------------------------------------
+"  Color
+" ------------------------------------------------------------------
+set t_Co=256
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+"nmap <silent> <leader><F1> :set background=dark<bar>let g:solarized_termcolors=256<bar> colorscheme solarized<CR>
+"nmap <silent> <leader><F2> :set background=light<bar>let g:solarized_termcolors=256<bar> colorscheme solarized<CR>
 
 " Highlight trailing whitespace
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
 " Set up highlight group & retain through colorscheme changes
-highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-map <silent> <LocalLeader>ws :highlight clear ExtraWhitespace<CR>
+"highlight ExtraWhitespace ctermbg=red guibg=red
+"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+"map <silent> <LocalLeader>ws :highlight clear ExtraWhitespace<CR>
 
 " Highlight too-long lines
-autocmd BufRead,InsertEnter,InsertLeave * 2match LineLengthError /\%126v.*/
-highlight LineLengthError ctermbg=black guibg=black
-autocmd ColorScheme * highlight LineLengthError ctermbg=black guibg=black
+"autocmd BufRead,InsertEnter,InsertLeave * 2match LineLengthError /\%126v.*/
+"highlight LineLengthError ctermbg=black guibg=black
+"autocmd ColorScheme * highlight LineLengthError ctermbg=black guibg=black
 
 " Comment colors
 highlight Comment ctermfg=DarkMagenta
+highlight VirtSplit ctermbg=red guibg=red
 
 set laststatus=2
 set statusline=
