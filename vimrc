@@ -28,10 +28,6 @@ let html_use_css=1
 let html_number_lines=0
 let html_no_pre=1
 
-let vimclojure#WantNailgun = 0
-let vimclojure#HighlightBuiltins = 1
-let vimclojure#ParenRainbow = 1
-
 let g:gist_clip_command = 'pbcopy'
 let g:gist_detect_filetype = 1
 
@@ -66,7 +62,6 @@ imap <C-L> <SPACE>=><SPACE>
 map <silent> <LocalLeader>py :w !python %<CR>
 map <silent> <LocalLeader>ry :w !ruby %<CR>
 map <silent> <LocalLeader>sp :w !rspec %<CR>
-map <silent> <LocalLeader>cj :!clj %<CR>
 map <silent> <LocalLeader>rt :!/usr/bin/ctags -R --exclude=".git\|.svn\|log\|tmp\|db\|pkg" --extra=+f<CR>
 map <silent> <LocalLeader>nt :NERDTreeToggle<CR>
 map <silent> <LocalLeader>nr :NERDTree<CR>
@@ -76,29 +71,15 @@ map <silent> <LocalLeader>ft :CtrlPTag<CR>
 map <silent> <LocalLeader>fb :CtrlPBuffer<CR>
 map <silent> <LocalLeader>fr :CtrlPClearAllCache<CR>
 map <silent> <LocalLeader>gd :e product_diff.diff<CR>:%!git diff<CR>:setlocal buftype=nowrite<CR>
-map <silent> <LocalLeader>pd :e product_diff.diff<CR>:%!svn diff<CR>:setlocal buftype=nowrite<CR>
 map <silent> <LocalLeader>nh :nohls<CR>
-map <silent> <LocalLeader>yr :YRShow<CR>
 map <LocalLeader>aw :Ack '<C-R><C-W>'
 map <silent> <LocalLeader>bd :bufdo :bd<CR>
-map <silent> <LocalLeader>cc :TComment<CR>
-map <silent> <LocalLeader>uc :TComment<CR>
 nnoremap <silent> <LocalLeader>rr :call ToggleRelativeNumber()<cr>
-nnoremap <silent> <LocalLeader>ee :tabe $MYVIMRC<CR>
-nnoremap <silent> <LocalLeader>ss :source $MYVIMRC<CR>
 nnoremap <silent> <LocalLeader><CR> :tabe<CR>
 nnoremap <silent> <LocalLeader>[ :tabp<CR>
 nnoremap <silent> <LocalLeader>] :tabn<CR>
 nnoremap <silent> <LocalLeader><Space> :noh<CR>
 nnoremap <silent> <LocalLeader>ww :%s/\s\+$//<CR>:let @/=''<CR><C-o>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-inoremap <F1> <ESC>
-inoremap jj <ESC>
-
-" vimux commands
-map <Leader>vq :VimuxCloseRunner<CR>
-map <Leader>rl :wa<CR> :VimuxRunLastCommand<CR>
 
 cnoremap <Tab> <C-L><C-D>
 
@@ -114,25 +95,14 @@ set t_Co=256
 set background=dark
 let g:solarized_termcolors=256
 colorscheme solarized
-"nmap <silent> <leader><F1> :set background=dark<bar>let g:solarized_termcolors=256<bar> colorscheme solarized<CR>
-"nmap <silent> <leader><F2> :set background=light<bar>let g:solarized_termcolors=256<bar> colorscheme solarized<CR>
 
-" Highlight trailing whitespace
-"autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-"autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
-" Set up highlight group & retain through colorscheme changes
-"highlight ExtraWhitespace ctermbg=red guibg=red
-"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-"map <silent> <LocalLeader>ws :highlight clear ExtraWhitespace<CR>
-
-" Highlight too-long lines
-"autocmd BufRead,InsertEnter,InsertLeave * 2match LineLengthError /\%126v.*/
-"highlight LineLengthError ctermbg=black guibg=black
-"autocmd ColorScheme * highlight LineLengthError ctermbg=black guibg=black
 
 " Comment colors
 highlight Comment ctermfg=DarkMagenta
 highlight VirtSplit ctermbg=red guibg=red
+
+nmap <silent> <localleader>d :set background=dark<bar>let g:solarized_termcolors=256<bar> colorscheme solarized<CR>
+nmap <silent> <localleader>l :set background=light<bar>let g:solarized_termcolors=256<bar> colorscheme solarized<CR>
 
 set laststatus=2
 set statusline=
@@ -157,6 +127,7 @@ function! DivHtml(line1, line2)
 
   set nonu
 endfunction
+
 command! -range=% DivHtml :call DivHtml(<line1>,<line2>)
 set undodir=~/.vim/undo
 set undofile
