@@ -4,6 +4,7 @@ syntax on
 filetype off
 execute pathogen#infect()
 filetype plugin indent on
+setlocal foldmethod=syntax
 
 compiler ruby
 
@@ -60,8 +61,8 @@ autocmd FileType ruby runtime ruby_mappings.vim
 imap <C-L> <SPACE>=><SPACE>
 imap <C-L> <SPACE>=><SPACE>
 map <silent> <LocalLeader>py :w !python %<CR>
-map <silent> <LocalLeader>ry :w !ruby %<CR>
-map <silent> <LocalLeader>sp :w !rspec %<CR>
+map <silent> <LocalLeader>ry :w !bundle exec ruby %<CR>
+map <silent> <LocalLeader>sp :w !bundle exec rspec %<CR>
 map <silent> <LocalLeader>rt :!/usr/bin/ctags -R --exclude=".git\|.svn\|log\|tmp\|db\|pkg" --extra=+f<CR>
 map <silent> <LocalLeader>nt :NERDTreeToggle<CR>
 map <silent> <LocalLeader>nr :NERDTree<CR>
@@ -71,6 +72,7 @@ map <silent> <LocalLeader>ft :CtrlPTag<CR>
 map <silent> <LocalLeader>fb :CtrlPBuffer<CR>
 map <silent> <LocalLeader>fr :CtrlPClearAllCache<CR>
 map <silent> <LocalLeader>gd :e product_diff.diff<CR>:%!git diff<CR>:setlocal buftype=nowrite<CR>
+map <silent> <LocalLeader>gb :!git blame %<CR>
 map <silent> <LocalLeader>nh :nohls<CR>
 map <LocalLeader>aw :Ack '<C-R><C-W>'
 map <silent> <LocalLeader>bd :bufdo :bd<CR>
@@ -80,6 +82,8 @@ nnoremap <silent> <LocalLeader>[ :tabp<CR>
 nnoremap <silent> <LocalLeader>] :tabn<CR>
 nnoremap <silent> <LocalLeader><Space> :noh<CR>
 nnoremap <silent> <LocalLeader>ww :%s/\s\+$//<CR>:let @/=''<CR><C-o>
+map <silent> <localleader>ae :Tab /=<CR>
+map <silent> <localleader>ar :Tab /=><CR>
 
 cnoremap <Tab> <C-L><C-D>
 
