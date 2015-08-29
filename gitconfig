@@ -7,13 +7,11 @@
   dif = "diff --color"
 [core]
 	editor = vim
- excludesfile = /opt/boxen/config/git/gitignore
-
-[credential]
-helper = /opt/boxen/bin/boxen-git-credential
 
 [hub]
 protocol = https
 [user]
-	email = reppardwalker@gmail.com
-	name = reppard
+  email = reppardwalker@gmail.com
+  name = reppard
+[push]
+	default = simple
