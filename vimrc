@@ -149,3 +149,6 @@ let g:ctrlp_max_files = 0
 let g:ctrlp_switch_buffer = 1
 let g:ctrlp_max_height = 20
 let g:ctrlp_clear_cache_on_exit = 0
+
+" Hightlight the 80th column
+set colorcolumn=80
