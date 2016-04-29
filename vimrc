@@ -42,6 +42,7 @@ let g:no_html_toolbar = 'yes'
 
 let coffee_no_trailing_space_error = 1
 
+
 autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
@@ -84,6 +85,7 @@ nnoremap <silent> <LocalLeader><Space> :noh<CR>
 nnoremap <silent> <LocalLeader>ww :%s/\s\+$//<CR>:let @/=''<CR><C-o>
 map <silent> <localleader>ae :Tab /=<CR>
 map <silent> <localleader>ar :Tab /=><CR>
+map <silent> <localleader>aa :Tab /
 
 cnoremap <Tab> <C-L><C-D>
 
