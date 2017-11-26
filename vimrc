@@ -1,5 +1,5 @@
 set nocompatible
-syntax on
+" syntax off
 
 filetype off
 execute pathogen#infect()
@@ -86,6 +86,7 @@ nnoremap <silent> <LocalLeader>ww :%s/\s\+$//<CR>:let @/=''<CR><C-o>
 map <silent> <localleader>ae :Tab /=<CR>
 map <silent> <localleader>ar :Tab /=><CR>
 map <silent> <localleader>aa :Tab /
+map <silent> <localleader>ap :Tab /\|<CR>
 
 cnoremap <Tab> <C-L><C-D>
 
