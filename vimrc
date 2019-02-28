@@ -49,15 +49,6 @@ autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType tex setlocal textwidth=78
 autocmd BufNewFile,BufRead *.txt setlocal textwidth=78
 
-" toggle relative number
-function! ToggleRelativeNumber()
-  if &relativenumber
-    set number
-  else
-    set relativenumber
-  endif
-endfunction
-
 autocmd FileType ruby runtime ruby_mappings.vim
 imap <C-L> <SPACE>=><SPACE>
 imap <C-L> <SPACE>=><SPACE>
@@ -77,7 +68,7 @@ map <silent> <LocalLeader>gb :!git blame %<CR>
 map <silent> <LocalLeader>nh :nohls<CR>
 map <LocalLeader>aw :Ack '<C-R><C-W>'
 map <silent> <LocalLeader>bd :bufdo :bd<CR>
-nnoremap <silent> <LocalLeader>rr :call ToggleRelativeNumber()<cr>
+nnoremap <silent> <LocalLeader>rr :set relativenumber!<cr>
 nnoremap <silent> <LocalLeader><CR> :tabe<CR>
 nnoremap <silent> <LocalLeader>[ :tabp<CR>
 nnoremap <silent> <LocalLeader>] :tabn<CR>

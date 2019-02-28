@@ -1,17 +1,7 @@
-[log]
-	decorate = full
-[color]
-
-[alias]
-  logger = "log --graph --abbrev-commit '--format=format:%h %C(yellow)%ci%Creset %Cgreen%an%Creset | %s'"
-  dif = "diff --color"
+[user]
+	name = Reppard
+	email = reppardwalker@gmail.com
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 [core]
 	editor = vim
-
-[hub]
-protocol = https
-[user]
-  email = reppardwalker@gmail.com
-  name = reppard
-[push]
-	default = simple
